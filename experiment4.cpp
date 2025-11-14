@@ -4,23 +4,42 @@ double a, b, ans;
 char ch;
 int main() {
   cin >> a >> ch >> b;
-  if (ch == '+') {
-    cout << "=" << a + b << "\n";
-  } else if (ch == '-') {
-    cout << "=" << a - b << "\n";
-  } else if (ch == '*') {
-    cout << "=" << a * b << "\n";
-  } else if (ch == '/') {
-    if (b == 0) {
-      cout << "除数不能为 0!\n";
-      return 0;
+  switch (ch) {
+    case '+': {
+      cout << a + b;
+      break;
     }
-    cout << "=" << a / b << endl;
-  } else if (ch == '%') {
-    int a1 = (int)a, b1 = (int)b;
-    cout << "=" << a1 % b1 << "\n";
-  } else {
-    cout << "非法运算符\n";
+    case '-': {
+      cout << a - b;
+      break;
+    }
+    case '*': {
+      cout << a * b;
+      break;
+    }
+    case '/': {
+      if (b != 0)
+        cout << a / b;
+      else
+        cout << "0 不能做除数";
+      break;
+    }
+    case '%': {
+      int a1 = (int)a, b1 = (int)b;
+      if ((double)a1 == a && (double)b1 == b) {
+        if (b1 != 0)
+          cout << a1 % b1;
+        else
+          cout << "0 不能做除数";
+      } else {
+        cout << "小数不能取余";
+      }
+      break;
+    }
+    default: {
+      cout << "非法运算符" << endl;
+      break;
+    }
   }
   return 0;
 }
